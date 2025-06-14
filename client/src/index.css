@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+.outfit{
+  font-family: "Outfit";
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 100%;
+  background: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 40px;
+  min-height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(./assets/slide_icon.svg);
+}
+
+.bg-layer{
+    background-image: url(./assets/bg_layer.png);
+}
