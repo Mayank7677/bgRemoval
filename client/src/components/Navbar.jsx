@@ -1,10 +1,20 @@
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
   const { openSignIn } = useClerk();
   const { isSignedIn, user } = useUser();
+  const { credit, getCreditData } = useContext(AppContext);
+
+  useEffect(() => {
+    getCreditData;
+    if (isSignedIn) {
+      getCreditData();
+    }
+  }, [isSignedIn]);
+
   return (
     <div className="mx-4 py-3 lg:py-4 lg:mx-44 flex items-center justify-between">
       <Link to={"/"}>

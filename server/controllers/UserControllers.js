@@ -2,6 +2,7 @@ const userModel = require("../models/UserSchema");
 const { Webhook } = require("svix");
 
 exports.clerkWebhook = async (req, res) => {
+  console.log(req.body)
   try {
     // creating svix instance with clerk webhook secret
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET_KEY);
@@ -15,7 +16,7 @@ exports.clerkWebhook = async (req, res) => {
     const { data, type } = req.body;
 
     switch (type) {
-      case "user.created": {
+      case "user.created": { 
         const userData = {
           clerkId: data.id,
           email: data.email_addresses[0].email_address,
@@ -53,6 +54,18 @@ exports.clerkWebhook = async (req, res) => {
     }
   } catch (error) {
     console.log("error in clerkWebhook : ", error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+exports.userCredits = async (req, res) => {
+  try {
+    const { clerkId } = req.body;
+    const userData = await userModel.findOne({ clerkId });
+
+    res.status(200).json({ success: true, credits: userData.creditBalance });
+  } catch (error) {
+    console.log("error in userCredits : ", error);
     res.json({ success: false, message: error.message });
   }
 };
