@@ -1,13 +1,14 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import connectDB from "./configs/db.js";
-
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./configs/db");
+const dotenv = require("dotenv");
+const userRouter = require("./routes/UserRoutes");
 
 // app config
-const PORT = process.env.PORT || 4000; 
+dotenv.config();
+const PORT = process.env.PORT || 4000;
 const app = express();
-await connectDB();
+connectDB();
 
 // middlewares
 app.use(express.json());
@@ -18,6 +19,8 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Working");
 });
+
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
   console.log("server is runing on port : ", PORT);
