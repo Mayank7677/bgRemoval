@@ -4,7 +4,12 @@ const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/webhooks", userController.clerkWebhook);
+router.post(
+  "/webhooks",
+  express.raw({ type: "application/json" }),
+  userController.clerkWebhook
+);
+  
 router.get("/credits", auth, userController.userCredits);
 
 module.exports = router;

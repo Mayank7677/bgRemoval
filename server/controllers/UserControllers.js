@@ -62,6 +62,8 @@ const { Webhook } = require("svix");
 
 
 exports.clerkWebhook = async (req, res) => {
+  console.log('---------------------------------------')
+  console.log(req.body)
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET_KEY);
 
