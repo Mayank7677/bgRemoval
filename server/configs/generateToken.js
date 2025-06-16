@@ -5,7 +5,10 @@ exports.generateToken = (email, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
+    secure: true, // only over HTTPS
+    sameSite: "None", // because frontend and backend are on different domains
   });
 
   return token;
 };
+ 
