@@ -29,7 +29,7 @@ const App = () => {
   
   useEffect(() => {
     checkAuth()
-  }, [checkAuth , authUser]);
+  }, []);
 
   useEffect(() => {
     if (authUser) {

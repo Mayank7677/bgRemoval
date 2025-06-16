@@ -11,4 +11,4 @@ exports.generateToken = (email, res) => {
 
   return token;
 };
- 
+    
