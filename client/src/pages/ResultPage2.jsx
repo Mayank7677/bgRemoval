@@ -3,7 +3,7 @@ import useImageResult from "../store/useImageResult";
 import useAuthStore from "../store/useAuthStore";
 import { Link, useNavigate } from "react-router-dom";
 
-const ResultPage = () => {
+const ResultPage2 = () => {
   const navigate = useNavigate();
   const { previewImage, resultImage, resetImages, resloading } =
     useImageResult();
@@ -21,24 +21,24 @@ const ResultPage = () => {
           {/* left side  */}
           <div>
             <p className="font-semibold text-gray-600 mb-2">Original</p>
-            <img
-              // className="rounded-md border border-neutral-200 h-full"
-              className="rounded-md border border-neutral-200 w-full h-[400px] object-contain"
-              src={previewImage}
-              alt=""
-            />
+            <div>
+              <img
+                // className="rounded-md border border-neutral-200 h-full w-full"
+                className="rounded-md border border-neutral-200 w-full h-[400px] object-contain"
+                src={previewImage}
+                alt=""
+              />
+            </div>
           </div>
 
           {/* right side  */}
 
           <div>
-            <p className="font-semibold text-gray-600 mb-2">
-              Background Removed
-            </p>
-            <div className="rounded-md border border-gray-300 w-full h-full  relative overflow-hidden">
+            <p className="font-semibold text-gray-600 mb-2">Inhanced Image</p>
+            <div className="rounded-md border border-gray-300 w-full h-full relative  overflow-hidden">
               {/* {resultImage ? (
                 <img
-                  // className="rounded-md border border-neutral-200"
+                  //   className="rounded-md border border-neutral-200 w-fit h-fit"
                   className="rounded-md border border-neutral-200 w-full h-[400px] object-contain"
                   src={resultImage}
                   alt=""
@@ -93,4 +93,4 @@ const ResultPage = () => {
   );
 };
 
-export default ResultPage;
+export default ResultPage2;

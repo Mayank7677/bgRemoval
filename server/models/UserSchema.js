@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  clerkId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   email: {
     type: String,
     required: true,
     unique: true,
   },
-  photo: {
+  password: {
     type: String,
     required: true,
+  },
+
+  photo: {
+    type: String,
   },
   firstName: {
     type: String,
@@ -24,6 +23,12 @@ const userSchema = new mongoose.Schema({
   creditBalance: {
     type: Number,
     default: 5,
+  },
+  otp: {
+    type: Number,
+  },
+  otpTimer: {
+    type: Number,
   },
 });
 
