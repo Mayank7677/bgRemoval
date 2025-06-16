@@ -25,7 +25,11 @@ const App = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
 
   // Optional: use global store to recheck session on load
-  const { checkAuth, credits, checkCredits , authUser } = useAuthStore();
+  const { checkAuth, credits, checkCredits, authUser } = useAuthStore();
+  
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth , authUser]);
 
   useEffect(() => {
     if (authUser) {
